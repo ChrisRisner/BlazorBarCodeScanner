@@ -2,16 +2,20 @@
 
 <div id="barcodeScannerElement" style="@barcodeScannerElementStyle"></div>
 
+<video id="vidBarCodeScanner" style="@barcodeVideoElementStyle"/>
+
 @code {
     [Inject] IJSRuntime JS { get; set; }
 
-    [Parameter] public EventCallback<string> OnISBNDetected { get; set; }
+    [Parameter] public EventCallback<string> OnUPCDetected { get; set; }
 
     string barcodeScannerElementStyle;
+    string barcodeVideoElementStyle;
 
     private async Task InitializeBarcodeScanner()
     {
         barcodeScannerElementStyle = string.Empty;
+        barcodeVideoElementStyle = string.Empty;
         var dotNetObjectReference = DotNetObjectReference.Create(this);
         //await JS.InvokeVoidAsync("InitBarcodeScanner", dotNetObjectReference);
         await JS.InvokeVoidAsync("InitBarcodeScan", dotNetObjectReference);
@@ -19,9 +23,9 @@
     }
 
     [JSInvokable]
-    public async Task OnDetected(string isbn)
+    public async Task OnDetected(string upc)
     {
-        barcodeScannerElementStyle = "display:none;";
-        await OnISBNDetected.InvokeAsync(isbn);
+        barcodeVideoElementStyle = "display:none;";
+        await OnUPCDetected.InvokeAsync(upc);
     }
 }

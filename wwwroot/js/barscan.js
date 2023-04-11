@@ -9,11 +9,15 @@ async function InitBarcodeScan(dotnetHelper) {
         video: { facingMode: "environment" }
     });
 
-    const video = document.createElement("video");
+    //const video = document.createElement("video");
+    const video = document.getElementById("vidBarCodeScanner");
     video.srcObject = mediaStream;
     video.autoplay = true;
 
-    list.before(video);
+    //list.before(video);
+
+    //Test to make sure we can call a .NET method.
+    //dotnetHelper.invokeMethodAsync("OnDetected", "123456680u0");
 
     function render() {
         barcodeDetector
@@ -25,6 +29,9 @@ async function InitBarcodeScan(dotnetHelper) {
                 const li = document.createElement("li");
                 li.innerHTML = barcode.rawValue;
                 list.appendChild(li);
+
+                // Pass to a .NET method.
+                dotnetHelper.invokeMethodAsync("OnDetected", barcode.rawValue); 
             }
             });
         })

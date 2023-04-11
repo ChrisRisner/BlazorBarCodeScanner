@@ -10,16 +10,17 @@ Welcome to your new app.
 
 <p role="status">UPC Code: @upc</p>
 
-<BarcodeScanner OnISBNDetected="GetBookInformation" />
+<BarcodeScanner OnUPCDetected="GetProductUPC" />
 
 <ul id="barcode-list"></ul>
+
 
 @code {
 
     @using BlazorBarCodeScanner.Components
     private string upc;
-    private async Task GetBookInformation(string isbn)
+    private async Task GetProductUPC(string foundUpc)
     {
-        upc = isbn;
+        upc = foundUpc;
     }
 }
