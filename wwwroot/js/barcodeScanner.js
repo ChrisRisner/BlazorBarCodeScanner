@@ -1,3 +1,7 @@
+//This is legacy code from attempting to get Quagga JS scanner to work
+//It had too many incorrect UPCs come through in scanning results and was inconsistent with those results
+//Replaced with the Barcode Detection API
+
 function InitBarcodeScanner(dotnetHelper) {
 
     Quagga.init({
