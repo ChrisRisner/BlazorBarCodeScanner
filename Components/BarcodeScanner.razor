@@ -13,7 +13,9 @@
     {
         barcodeScannerElementStyle = string.Empty;
         var dotNetObjectReference = DotNetObjectReference.Create(this);
-        await JS.InvokeVoidAsync("InitBarcodeScanner", dotNetObjectReference);
+        //await JS.InvokeVoidAsync("InitBarcodeScanner", dotNetObjectReference);
+        await JS.InvokeVoidAsync("InitBarcodeScan", dotNetObjectReference);
+        
     }
 
     [JSInvokable]

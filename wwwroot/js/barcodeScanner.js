@@ -9,7 +9,9 @@ function InitBarcodeScanner(dotnetHelper) {
         decoder: {
             // This is the type of barcode we are scanning. 
             // For barcodes other than books/ ISBNs, change this value.
-            readers: ["upc_e_reader", ]
+            readers: ["code_128_reader", 'ean_8_reader',
+            'upc_reader',
+            'upc_e_reader']
         }
     }, function (err) {
         if (err) {
